@@ -34,5 +34,20 @@ def bubble_sort(arr):
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
 
-    
+    for number in arr:
+        if number > maximum:
+            maximum = number
+        if number < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+
+    countingArray = [0] * (maximum+1)
+
+    for number in arr:
+        countingArray[number] += 1
+
+    answer = []
+    for index, value in enumerate(countingArray):
+        answer.extend([index]*value)
+
+    # print(f"answer: {answer}")
     return answer
