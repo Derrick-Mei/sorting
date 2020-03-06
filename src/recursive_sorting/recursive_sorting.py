@@ -84,7 +84,19 @@ def merge_in_place(arr, start, mid, end):
     return arr
 
 
+def merge_sort_in_place(arr, l, r):
+    # TO-DO
+    # if left is < r that means it's more than 1 element therefore you need to recurse
+    if l < r:
+        # make sure to use parens bc of order of operations
+        middle = (l+r) // 2
+        merge_sort_in_place(arr, l, middle)
+        #  +1 so we don't count it twice
+        merge_sort_in_place(arr, middle+1, r)
 
+        merge_in_place(arr, l, middle, r)
+
+    return arr
 
 
 # STRETCH: implement the Timsort function below
