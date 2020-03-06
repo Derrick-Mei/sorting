@@ -56,14 +56,35 @@ def merge_sort(arr):
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
+    # +1 because list comprehension is no inclusive of right index
+    leftCopy = arr[start:mid+1]
+    lenLeft = len(leftCopy)
+    leftTravel = 0
+
+    rightIndex = mid+1
+
+    # while both left and right elements have not been completely covered
+    # right is <= because index is 0 based
+    while(leftTravel < lenLeft and rightIndex <= end):
+        if leftCopy[leftTravel] < arr[rightIndex]:
+            arr[start] = leftCopy[leftTravel]
+            leftTravel += 1
+        else:
+            arr[start] = arr[rightIndex]
+            rightIndex += 1
+        start += 1
+
+    # if the left has all been copied, then that means the larger numbers on the rightSide array is ordered in place already
+    # so we only need to add the left copy to the array
+    while leftTravel < lenLeft:
+        arr[start] = leftCopy[leftTravel]
+        leftTravel += 1
+        start += 1
 
     return arr
 
 
-def merge_sort_in_place(arr, l, r):
-    # TO-DO
 
-    return arr
 
 
 # STRETCH: implement the Timsort function below
